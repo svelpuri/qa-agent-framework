@@ -46,7 +46,7 @@ Both modes produce the same work folder, the same session record, and the same o
 
 | Command | Purpose |
 |---|---|
-| `qa plan <service> [--api <api>]` | Test Plan Generator |
+| `qa plan <service> [--api <api>] [--major]` | Test Plan Generator; `--major` bumps the plan's major version |
 | `qa cases <service> [--api <api>]` | Test Case Generator |
 | `qa run <service> --env <env> [--api <api>] [--case <id>] [--tag <tag>]` | Test Executor |
 | `qa optimize <service> [--runs <n>]` | Optimizer and Learner |
@@ -56,6 +56,8 @@ Both modes produce the same work folder, the same session record, and the same o
 | `qa session start <agent> <service> [flags]` / `qa session finish --session <id>` | Open and close an interactive session |
 | `qa status <service>` | Plan version, stale cases, blocked cases, open gaps, missing environment values |
 | `qa new-service <service>` | Scaffold a service (also called by `scan-layout`) |
+| `qa tag <service>` | Tag the merged plan version as `<service>/plan-v<version>` (Phase 1; automatic in Phase 2) |
+| `qa results prune` | Apply retention to the local folder results store |
 | `qa validate [<path>]` | Check artifacts against schemas and traceability rules |
 | `qa check-connector <concern> <name>` | Run the connector conformance kit |
 | `qa package-runtime --out <dir>` | Build the runtime-specific plugin through the `agent_runtime` connector |

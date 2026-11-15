@@ -48,7 +48,7 @@ Every item marked TBD in the requirements, the docs, or the sample structure, an
 | Failure taxonomy | Seven classes with decision rules and required evidence | [4.7](04-agents.md#47-failure-taxonomy) |
 | Methodology (what to test) | Coverage rules per behavior | [4.3](04-agents.md#43-test-design-method) |
 | Oracle rules | Source order and conflict handling | [4.4](04-agents.md#44-oracle-rules) |
-| Case status values | `active`, `blocked`, `quarantined`, `retired`; the sample's `reviewed` is dropped because nothing is ever marked approved | [2.6](02-artifacts.md#26-test-case) |
+| Case status values | `active`, `blocked`, `quarantined`, `retired`; the sample's `reviewed` is dropped because nothing is ever marked approved | [2.6](02-artifacts.md#26-test-case-apisapicasescase-idyaml) |
 | Transport errors versus validator failures | One status, `failed`, with a `failure_kind` field; no new status | [3.7](03-engine.md#37-verdict-rules) |
 | Run index under parallel writers | One index object per run instead of one shared file | [8.2](08-results-store.md#82-run-index) |
 | Service maturity in the registry | Kept as an informational field only; no behavior depends on it | [2.3](02-artifacts.md#23-registry) |

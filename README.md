@@ -4,7 +4,7 @@ A generic, vendor-neutral framework in which agents plan, write, run, and improv
 
 Agents turn specs, user stories, and additional instructions into versioned test plans and test cases. A deterministic engine runs the cases and decides pass or fail. Agents summarize and analyze each run, and an optimizer learns across runs and proposes improvements. Everything lives in git except execution results and secrets.
 
-> **Status:** requirements baselined (draft v11). Detailed design and the first working slice are next. See [docs/roadmap.md](docs/roadmap.md).
+> **Status:** requirements baselined (draft v11); detailed design drafted in [docs/design/](docs/design/README.md). The first working slice is next. See [docs/roadmap.md](docs/roadmap.md).
 
 ![The four agents](docs/diagrams/fig01-the-four-agents-design-time-run-time-and-the-impro.svg)
 
@@ -48,6 +48,7 @@ Results and secrets never live here. See [docs/folder-structure.md](docs/folder-
 |---|---|
 | [Requirements](docs/requirements.md) | Full requirements baseline with diagrams and the decision log |
 | [Architecture overview](docs/architecture.md) | How the pieces fit: agents, engine, connectors, stores, triggers |
+| [Detailed design](docs/design/README.md) | Interfaces, schemas, step contracts, connector interfaces, and how every TBD item is resolved |
 | [Agents](docs/agents.md) | Each agent's inputs, steps, flags, and outputs |
 | [Folder structure](docs/folder-structure.md) | Repositories, folders, and what each file holds |
 | [Versioning and change tracking](docs/versioning.md) | How changes in specs, stories, and instructions flow to plans and cases |

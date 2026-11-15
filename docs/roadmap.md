@@ -4,7 +4,7 @@
 
 - [x] Requirements baseline ([requirements.md](requirements.md))
 - [x] Repository with documentation
-- [ ] Detailed design document: interfaces, schemas, step contracts, connector interfaces, and every item marked TBD
+- [x] Detailed design document: interfaces, schemas, step contracts, connector interfaces, and every item marked TBD ([design/](design/README.md))
 
 ## Phase 1: first working slice (manual triggers)
 

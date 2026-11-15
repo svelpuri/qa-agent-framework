@@ -1,6 +1,6 @@
 # Architecture overview
 
-A short tour of how the framework fits together. The [requirements](requirements.md) hold the full detail; the detailed design document will finalize names and interfaces.
+A short tour of how the framework fits together. The [requirements](requirements.md) hold the full detail; the [detailed design](design/README.md) finalizes names and interfaces.
 
 ## Building blocks
 
