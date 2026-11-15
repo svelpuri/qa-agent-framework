@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 1000 240" xmlns="http://www.w3.org/2000/svg" width="1000" height="240"><rect x="0" y="0" width="1000" height="240" fill="#ffffff"/><defs><marker id="ah8" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#5F5E5A"/></marker></defs><rect x="10" y="70" width="140" height="80" rx="7" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+<text x="80.0" y="101.75" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="middle" font-weight="bold" fill="#2C2C2A">Spec + contracts</text>
+<text x="80.0" y="113.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#5F5E5A">+ acceptance</text>
+<text x="80.0" y="125.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#5F5E5A">criteria</text>
+<rect x="185" y="60" width="170" height="100" rx="7" fill="#FBEAF0" stroke="#993556" stroke-width="1"/>
+<text x="270.0" y="95.75" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="middle" font-weight="bold" fill="#4B1528">Derive validations</text>
+<text x="270.0" y="107.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#993556">per API: status, schema,</text>
+<text x="270.0" y="119.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#993556">field rules, events,</text>
+<text x="270.0" y="131.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#993556">state, latency, authz</text>
+<rect x="390" y="60" width="160" height="100" rx="7" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+<text x="470.0" y="95.75" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="middle" font-weight="bold" fill="#26215C">Match against</text>
+<text x="470.0" y="107.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#534AB7">validator catalog</text>
+<text x="470.0" y="119.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#534AB7">connectors, adapters,</text>
+<text x="470.0" y="131.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#534AB7">tools, checks</text>
+<rect x="590" y="20" width="190" height="60" rx="7" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+<text x="685.0" y="47.75" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="middle" font-weight="bold" fill="#04342C">Mapped</text>
+<text x="685.0" y="59.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#0F6E56">case uses existing validator</text>
+<rect x="590" y="110" width="190" height="70" rx="7" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+<text x="685.0" y="136.75" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="middle" font-weight="bold" fill="#412402">Gap</text>
+<text x="685.0" y="148.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#854F0B">listed in the plan;</text>
+<text x="685.0" y="160.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#854F0B">affected cases blocked</text>
+<rect x="820" y="90" width="170" height="110" rx="7" fill="#FBEAF0" stroke="#993556" stroke-width="1"/>
+<text x="905.0" y="124.75" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="middle" font-weight="bold" fill="#4B1528">Close the gap</text>
+<text x="905.0" y="136.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#993556">user builds it, or asks</text>
+<text x="905.0" y="148.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#993556">the validator generator;</text>
+<text x="905.0" y="160.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#993556">reviewed and tested</text>
+<text x="905.0" y="172.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#993556">before use</text>
+<polyline points="150,110 183,110" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah8)"/>
+<polyline points="355,110 388,110" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah8)"/>
+<polyline points="550,95 588,52" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah8)"/>
+<polyline points="550,125 588,145" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah8)"/>
+<polyline points="780,145 818,145" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah8)"/>
+<polyline points="905,200 905,225 470,225 470,162" fill="none" stroke="#0F6E56" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ah8)"/>
+<text x="690" y="220" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#0F6E56" font-style="italic">added to the catalog, gap closed, cases unblocked</text></svg>

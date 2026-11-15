@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 1000 495" xmlns="http://www.w3.org/2000/svg" width="1000" height="495"><rect x="0" y="0" width="1000" height="495" fill="#ffffff"/><defs><marker id="ah1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#5F5E5A"/></marker></defs><rect x="10" y="10" width="980" height="175" rx="12" fill="none" stroke="#534AB7" stroke-width="0.8" stroke-dasharray="5 4"/><text x="20" y="26" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="bold" fill="#26215C">Design time</text>
+<rect x="22" y="38" width="120" height="40" rx="7" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+<text x="82.0" y="61.5" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" font-weight="bold" fill="#2C2C2A">spec</text>
+<rect x="22" y="84" width="120" height="40" rx="7" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+<text x="82.0" y="107.5" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" font-weight="bold" fill="#2C2C2A">API contracts</text>
+<rect x="22" y="130" width="120" height="40" rx="7" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+<text x="82.0" y="153.5" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" font-weight="bold" fill="#2C2C2A">User stories + AC</text>
+<rect x="175" y="60" width="150" height="90" rx="7" fill="#FBEAF0" stroke="#993556" stroke-width="1"/>
+<text x="250.0" y="90.75" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="middle" font-weight="bold" fill="#4B1528">A1 Test Plan</text>
+<text x="250.0" y="102.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#993556">Generator</text>
+<text x="250.0" y="114.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#993556">create or version</text>
+<text x="250.0" y="126.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#993556">the service plan</text>
+<rect x="358" y="60" width="150" height="90" rx="7" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+<text x="433.0" y="96.75" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="middle" font-weight="bold" fill="#04342C">Test plan</text>
+<text x="433.0" y="108.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#0F6E56">per service,</text>
+<text x="433.0" y="120.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#0F6E56">sections per API</text>
+<rect x="358" y="152" width="150" height="26" rx="7" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+<text x="433.0" y="168.0" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="bold" fill="#412402">+ user notes, optional review</text>
+<rect x="541" y="60" width="150" height="90" rx="7" fill="#FBEAF0" stroke="#993556" stroke-width="1"/>
+<text x="616.0" y="90.75" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="middle" font-weight="bold" fill="#4B1528">A2 Test Case</text>
+<text x="616.0" y="102.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#993556">Generator</text>
+<text x="616.0" y="114.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#993556">reads plan +</text>
+<text x="616.0" y="126.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#993556">user instructions</text>
+<rect x="724" y="42" width="254" height="50" rx="7" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+<text x="851.0" y="64.75" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="middle" font-weight="bold" fill="#04342C">Test cases per API</text>
+<text x="851.0" y="76.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#0F6E56">with ${variables}</text>
+<rect x="724" y="100" width="254" height="50" rx="7" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+<text x="851.0" y="122.85" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="middle" font-weight="bold" fill="#04342C">Data file template per API</text>
+<text x="851.0" y="134.65" font-family="Helvetica, Arial, sans-serif" font-size="8.8" text-anchor="middle" font-weight="normal" fill="#0F6E56">variable name, type, required, sensitive</text>
+<rect x="724" y="152" width="254" height="26" rx="7" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+<text x="851.0" y="168.0" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="bold" fill="#412402">+ user fills real values per environment</text>
+<polyline points="142,58 173,105" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah1)"/>
+<polyline points="142,104 173,105" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah1)"/>
+<polyline points="142,150 173,105" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah1)"/>
+<polyline points="325,105 356,105" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah1)"/>
+<polyline points="508,105 539,105" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah1)"/>
+<polyline points="691,95 722,67" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah1)"/>
+<polyline points="691,115 722,125" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah1)"/>
+<rect x="10" y="200" width="980" height="150" rx="12" fill="none" stroke="#185FA5" stroke-width="0.8" stroke-dasharray="5 4"/><text x="20" y="216" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="bold" fill="#0C447C">Run time (per service instance)</text>
+<rect x="22" y="232" width="170" height="90" rx="7" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+<text x="107.0" y="268.75" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="middle" font-weight="bold" fill="#04342C">Cases + env</text>
+<text x="107.0" y="280.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#0F6E56">data file</text>
+<text x="107.0" y="292.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#0F6E56">qa.yaml / staging.yaml</text>
+<rect x="232" y="222" width="210" height="110" rx="7" fill="#FBEAF0" stroke="#993556" stroke-width="1"/>
+<text x="337.0" y="262.75" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="middle" font-weight="bold" fill="#4B1528">A3 Test Executor</text>
+<text x="337.0" y="274.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#993556">binds variables, runs,</text>
+<text x="337.0" y="286.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#993556">then summarizes and</text>
+<text x="337.0" y="298.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#993556">analyzes the run</text>
+<rect x="482" y="222" width="190" height="50" rx="7" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+<text x="577.0" y="244.75" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="middle" font-weight="bold" fill="#2C2C2A">Results + logs</text>
+<text x="577.0" y="256.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#5F5E5A">results store, not git</text>
+<rect x="482" y="282" width="190" height="50" rx="7" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+<text x="577.0" y="304.75" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="middle" font-weight="bold" fill="#2C2C2A">Run report</text>
+<text x="577.0" y="316.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#5F5E5A">results store + summary</text>
+<polyline points="192,277 230,277" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah1)"/>
+<polyline points="442,262 480,247" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah1)"/>
+<polyline points="442,292 480,307" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah1)"/>
+<rect x="10" y="365" width="980" height="120" rx="12" fill="none" stroke="#854F0B" stroke-width="0.8" stroke-dasharray="5 4"/><text x="20" y="381" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="start" font-weight="bold" fill="#412402">Improvement loop (across runs)</text>
+<rect x="260" y="395" width="210" height="66" rx="7" fill="#FBEAF0" stroke="#993556" stroke-width="1"/>
+<text x="365.0" y="419.75" font-family="Helvetica, Arial, sans-serif" font-size="10.5" text-anchor="middle" font-weight="bold" fill="#4B1528">A4 Test Optimizer</text>
+<text x="365.0" y="431.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#993556">and Learner</text>
+<text x="365.0" y="443.75" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#993556">reads logs across runs</text>
+<rect x="510" y="382" width="210" height="42" rx="7" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+<text x="615.0" y="400.6" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" font-weight="bold" fill="#04342C">Learnings record</text>
+<text x="615.0" y="412.40000000000003" font-family="Helvetica, Arial, sans-serif" font-size="8.8" text-anchor="middle" font-weight="normal" fill="#0F6E56">read by A1, A2, A3</text>
+<rect x="510" y="434" width="210" height="42" rx="7" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+<text x="615.0" y="452.6" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" font-weight="bold" fill="#412402">Recommendations</text>
+<text x="615.0" y="464.40000000000003" font-family="Helvetica, Arial, sans-serif" font-size="8.8" text-anchor="middle" font-weight="normal" fill="#854F0B">cases, plan, agents</text>
+<rect x="760" y="434" width="218" height="42" rx="7" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+<text x="869.0" y="452.6" font-family="Helvetica, Arial, sans-serif" font-size="10" text-anchor="middle" font-weight="bold" fill="#412402">Human review (PR)</text>
+<text x="869.0" y="464.40000000000003" font-family="Helvetica, Arial, sans-serif" font-size="8.8" text-anchor="middle" font-weight="normal" fill="#854F0B">accept or reject</text>
+<polyline points="672,247 700,247 700,356 365,356 365,393" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah1)"/>
+<polyline points="470,415 508,403" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah1)"/>
+<polyline points="470,440 508,455" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah1)"/>
+<polyline points="720,455 758,455" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah1)"/>
+<polyline points="720,403 740,403 740,192 616,192 616,152" fill="none" stroke="#0F6E56" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ah1)"/>
+<text x="748" y="300" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="start" font-weight="normal" fill="#0F6E56" font-style="italic">learnings</text>
+<polyline points="978,455 986,455 986,24 433,24 433,58" fill="none" stroke="#854F0B" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ah1)"/>
+<text x="700" y="20" font-family="Helvetica, Arial, sans-serif" font-size="9" text-anchor="middle" font-weight="normal" fill="#854F0B" font-style="italic">accepted changes return to the plan</text></svg>

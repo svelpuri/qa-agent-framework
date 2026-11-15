@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.venv/
+
+# Local data overrides and run output never get committed
+**/data/*.local.yaml
+results/
+.local/
+
+# Editors and OS
+.DS_Store
+.idea/
+.vscode/
