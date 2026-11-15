@@ -2,7 +2,7 @@
 
 **Status:** draft for review. Follows the [requirements baseline](../requirements.md) (draft v11) and the [decisions](../decisions.md). Where this design picks a default for something the requirements left open, the choice is listed in [Resolved items](#resolved-items) and added to the decision log as a "Default" that can be revisited.
 
-**In short.** A single Python package, `qa`, owns everything deterministic: the step runner that applies flags, the tools, the engine that decides pass or fail, the guards, and the connector and plugin loaders. Agents are prompts (skills) that run in the agent runtime and do only the reasoning steps: writing plan sections, designing and writing cases, analyzing runs, writing learnings and recommendations. Every step reads and writes typed files in a work folder, so the same step works when a person runs it, when an event triggers it, and in CI/CD. Every artifact has a schema and is checked before commit. Change tracking is driven by normalized fingerprints in `sources.lock`, and staleness is computed, never stored.
+**In short.** A single Python package, `qa`, owns everything deterministic: the step runner that applies flags, the tools, the engine that decides pass or fail, the guards, and the connector and plugin loaders. Agents are prompts (skills) that run in the agent runtime and do only the reasoning steps: writing plan sections, designing and writing cases, analyzing runs, writing learnings and recommendations. Every step reads and writes typed files in a work folder, so the same step works when a person runs it, when an event triggers it, and in CI/CD. Every artifact has a schema and is checked before commit. Change tracking is driven by normalized fingerprints in `sources.lock`. Generators never overwrite: no change means no write, and a case that is no longer valid is marked obsolete and tagged while a new case covers the change.
 
 ## Chapters
 
@@ -37,7 +37,7 @@ Every item marked TBD in the requirements, the docs, or the sample structure, an
 | Which ticket statuses trigger an update | Per service list in `agent.yaml`, defaulting to the firm profile; stories that leave the list go on hold, not retired | [6.6](06-versioning.md#66-ticket-statuses) |
 | How the deployed version is discovered | `deployed_version` connector; default reads a version endpoint per environment; unknown versions run and are flagged | [6.7](06-versioning.md#67-deployed-version-and-pending-cases) |
 | Side-by-side API versions (`/v1`, `/v2`) | Each major API version is its own API folder linked by `version_of` | [6.8](06-versioning.md#68-side-by-side-api-versions) |
-| Merging into hand-edited cases | Never merged automatically. Edits are detected by fingerprint; the PR carries a proposed diff | [6.5](06-versioning.md#65-stale-cases-and-hand-edited-cases) |
+| Merging into hand-edited cases | Never merged or rewritten. An invalid case, edited or not, is marked obsolete and tagged, and a new case replaces it; no change means no write | [6.5](06-versioning.md#65-change-policy-obsolete-and-add-never-overwrite) |
 | How workflows track API versions | `workflow.lock` pins section versions and fingerprints of every service API a workflow calls | [6.9](06-versioning.md#69-workflows) |
 | Validator catalog format | Catalog entry schema with `kind`, `interface`, parameter schema, status, version | [3.6](03-engine.md#36-validators-and-the-catalog) |
 | Validator generator details | Inputs, outputs, required tests, acceptance rules | [4.8](04-agents.md#48-validator-generator) |
@@ -48,7 +48,7 @@ Every item marked TBD in the requirements, the docs, or the sample structure, an
 | Failure taxonomy | Seven classes with decision rules and required evidence | [4.7](04-agents.md#47-failure-taxonomy) |
 | Methodology (what to test) | Coverage rules per behavior | [4.3](04-agents.md#43-test-design-method) |
 | Oracle rules | Source order and conflict handling | [4.4](04-agents.md#44-oracle-rules) |
-| Case status values | `active`, `blocked`, `quarantined`, `retired`; the sample's `reviewed` is dropped because nothing is ever marked approved | [2.6](02-artifacts.md#26-test-case-apisapicasescase-idyaml) |
+| Case status values | `active`, `blocked`, `quarantined`, `obsolete`; the sample's `reviewed` is dropped because nothing is ever marked approved | [2.6](02-artifacts.md#26-test-case-apisapicasescase-idyaml) |
 | Transport errors versus validator failures | One status, `failed`, with a `failure_kind` field; no new status | [3.7](03-engine.md#37-verdict-rules) |
 | Run index under parallel writers | One index object per run instead of one shared file | [8.2](08-results-store.md#82-run-index) |
 | Service maturity in the registry | Kept as an informational field only; no behavior depends on it | [2.3](02-artifacts.md#23-registry) |

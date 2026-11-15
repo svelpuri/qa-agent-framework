@@ -142,7 +142,7 @@ class ResultsStore(Protocol):
 class TestManagement(Protocol):
     def push_results(self, run: RunSummary, results: list[CaseResult]) -> str: ...
     def upsert_case(self, case: TestCase, external_id: str | None) -> str: ...   # optional, used by a plugin
-    def retire_case(self, external_id: str) -> None: ...                         # optional
+    def obsolete_case(self, external_id: str, reason: str) -> None: ...          # optional
 ```
 
 Git stays the source of truth (D11). `upsert_case` exists only for the plugin that pushes cases one way.

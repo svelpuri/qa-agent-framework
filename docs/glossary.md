@@ -18,7 +18,8 @@
 | **Plugin** | An optional step that adds an output, configured by manifest |
 | **Run index** | One entry per run in the results store, for queries across runs |
 | **sources.lock** | The versions and fingerprints of every source a plan was built from |
-| **Stale case** | A case whose recorded source fingerprints no longer match the current sources |
+| **Obsolete case** | A case that is no longer valid because the requirement it tests changed or was removed; kept and tagged, never run, replaced by a new case where the behavior still exists |
+| **Stale case** | A case whose source fingerprints no longer match, before the case generator has marked it obsolete |
 | **Step** | A named part of an agent's work; all on by default, switchable by flag |
 | **Validation** | One thing a test must check |
 | **Validation gap** | A required validation with no validator in the catalog; blocks the affected cases |

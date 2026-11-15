@@ -29,13 +29,13 @@ Every agent step receives the same base context in `<step>.in.json`: the service
 
 | Step | Kind | Reads | Writes | Stops when |
 |---|---|---|---|---|
-| `read-plan` | tool | Plan, cases, `sources.lock`, catalog | `read-plan.out.json`: per API, behaviors without cases, stale cases, cases for retired behaviors, gaps now closed | The plan fails its schema |
-| `design-cases` | agent | `read-plan` output, plan, instructions, learnings | `design-cases.out.json`: one entry per planned case: behavior, type, priority, validators, data needs, new or replacing which id | Never |
-| `write-cases` | agent | The design | Case files; retired status on removed behaviors; `proposals.md` in the work folder for edited cases | Never; schema errors are caught by `validate` |
+| `read-plan` | tool | Plan, cases, `sources.lock`, catalog | `read-plan.out.json`: per API, behaviors without cases, invalid cases with their reason, gaps now closed | The plan fails its schema. Nothing to do ends the session with `result: no_changes` and writes nothing |
+| `design-cases` | agent | `read-plan` output, plan, instructions, learnings | `design-cases.out.json`: one entry per planned case: behavior, type, priority, validators, data needs, the ids it replaces; entries whose duplicate key matches an active case are dropped, and invalid cases whose test would not change are marked confirmed ([6.5](06-versioning.md#65-change-policy-obsolete-and-add-never-overwrite)) | Never |
+| `write-cases` | agent | The design | New case files only. Existing cases get only the allowed field changes: `obsolete` status, tags, and block for invalid cases | Never; schema errors are caught by `validate` |
 | `data-template` | tool + agent | Cases | `template.yaml`: the tool computes the variable list, types, `used_by`, and `new_in_plan`; the agent fills only `description` and `example` | Never |
 | `validate` | tool | Changed files | `validate.out.json` | Any error (exit 4) |
 | `plugins` | tool | Enabled plugins for `case-generator` | Plugin outputs and state ([7.1](07-plugins-guards.md#71-plugins)) | Never; a failing plugin is reported (PL-6) |
-| `commit` | tool | Working tree | Branch `qa/cases/<service>/<short>`, PR listing new, regenerated, retired, blocked cases, new variables per environment, and proposals for edited cases | As for the plan generator |
+| `commit` | tool | Working tree | Branch `qa/cases/<service>/<short>`, PR listing new cases, obsolete cases with their reason and replacement, confirmed cases, blocked cases, and new variables per environment; hand-edited cases that became obsolete are shown next to their replacement | As for the plan generator |
 
 Rules enforced by `validate`:
 
@@ -43,9 +43,10 @@ Rules enforced by `validate`:
 - Every request value that is not a constant from the contract (method, path template, header names) is a `${variable}` (TC-3). Literal hosts, ids, and amounts fail validation.
 - Every validator is an `active` catalog entry and its parameters match the schema (VL-8).
 - Cases for a behavior blocked by a validation or requirement gap have `status: blocked` and `blocked_by`.
-- Edited cases are unchanged except for `qa_meta.edited_by_person` ([6.5](06-versioning.md#65-stale-cases-and-hand-edited-cases)).
+- Existing cases are unchanged except for the fields allowed in [6.5](06-versioning.md#65-change-policy-obsolete-and-add-never-overwrite), checked against the base commit.
+- No two active cases share a duplicate key.
 
-`details`: `{plan_version, cases: {new, regenerated, retired, blocked, proposals}, new_variables: {<env>: [<names>]}, plugins: [{name, outcome}], branch, pr}`.
+`details`: `{plan_version, cases: {new, obsolete, confirmed, blocked}, new_variables: {<env>: [<names>]}, plugins: [{name, outcome}], branch, pr}`.
 
 ## 4.3 Test design method
 

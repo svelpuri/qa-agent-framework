@@ -87,29 +87,65 @@ Every merged plan version gets the tag `<service>/plan-v<MAJOR.MINOR>`. Tagging 
 
 Two plan generator runs on unchanged inputs produce no diff (NF-4): `version` bumps only when `detect-changes` found something and the written blocks differ from what was there.
 
-## 6.5 Stale cases and hand-edited cases
+## 6.5 Change policy: obsolete and add, never overwrite
 
-Staleness is computed, never stored, so it cannot drift. A case is **stale** when any of these differ from the current state:
+Owner decision D29. Applies to both generators.
 
-- `traces_to.plan.section_version` major number differs from the section's current major number.
-- Any `traces_to.ac[].fingerprint` or `traces_to.spec[].fingerprint` differs from the current source.
-- An instruction in `traces_to.instructions` changed fingerprint since the case's `qa_meta.generated_by.session`.
+**1. No change, no write.** The plan generator stops with `no_changes` when `detect-changes` finds nothing. The case generator stops with `no_changes` when `read-plan` finds no behavior without a case, no invalid case, and no closed gap. In both cases nothing is written: no file, no branch, no PR (NF-4).
 
-`qa status` lists stale cases; `read-plan` feeds them to the case generator; the engine adds `stale: true` to their results so the analysis can say a failure may come from an outdated case.
+**2. Only the delta is touched.** The plan generator updates only the API sections whose sources changed, and every other section stays byte-identical. Person-owned blocks are never touched. The plan is one living file, and its history is the git history plus `CHANGELOG.md`.
 
-Hand-edited cases (`qa_meta.edited_by_person: true`, or a file whose fingerprint no longer matches `qa_meta.generated_fp`):
+**3. A written case's test content is never changed by a generator.** Its steps, requests, validations, expected values, data sets, and `traces_to` stay exactly as written, whether a generator or a person wrote them. A generator may change only these fields on an existing case:
 
-1. The generator never writes the file, apart from setting `edited_by_person: true`.
-2. If the case is stale, the generator writes the case it would have produced, computes a three-way diff (last generated version from git history, the person's version, the new version), and puts it in the PR description under "Proposed changes to edited cases" with the reason.
-3. If the behavior was removed, the case is listed for retirement in the PR; the person sets `status: retired`.
-4. A person accepts a proposal by applying it and setting `edited_by_person: false`, which hands the case back to the generator.
+| Field | Change allowed |
+|---|---|
+| `status` | To `obsolete`, `blocked`, or back to `active` from `blocked` |
+| `tags` | Add `obsolete` and `obsolete:<reason>` |
+| `obsolete` | Add the block below |
+| `blocked_by` | Set or clear |
+| `qa_meta` | Set `edited_by_person`, `confirmed_in_plan` |
+
+`validate` compares every existing case with the base commit and fails the session if any other field changed. The guard `check_write` enforces the same rule while the agent works.
+
+**4. Invalid cases become obsolete and are tagged.** A case is invalid when:
+
+| Reason tag | Cause |
+|---|---|
+| `obsolete:requirement-changed` | The fingerprint of an acceptance criterion it traces to changed |
+| `obsolete:spec-changed` | The fingerprint of a spec section it traces to changed |
+| `obsolete:contract-breaking` | Its section's major version changed because of a breaking contract change |
+| `obsolete:behavior-removed` | The behavior it tests was removed from the plan |
+| `obsolete:api-removed` | Its API was removed from the contract |
+
+The case generator then marks it:
+
+```yaml
+status: obsolete
+tags: [ticket:PAY-20, obsolete, "obsolete:requirement-changed"]
+obsolete:
+  since_plan: "1.1"
+  reason: requirement-changed
+  cause: "PAY-20#AC2"                 # the source that changed
+  detail: "Decline limit changed from 500 to 1000"
+  replaced_by: [PAY-AUTH-TC-0007]     # empty when the behavior was removed
+```
+
+Obsolete cases stay in the folder so history stays readable. They are never run, their ids are never reused, and `qa status` and the PR list them. Plugins move their external copies to an obsolete state (for example, the tracker item).
+
+**5. Changes get new cases.** For each invalid case whose behavior still exists, and for each new behavior, the generator writes a new case with the next free id. A replacement carries `replaces: [<old id>]`. Before writing any new case, the generator checks for duplicates. The duplicate key is the operation, the behavior ids, the case type, the validators with their parameters, and the data set names. If an active case already has the same key, no new case is written.
+
+**6. A change that does not alter the test.** When a source changed but the case the generator would write now is identical in test content to the existing case (same key and same expected values), for example a reworded criterion, the case stays active. Only `qa_meta.confirmed_in_plan` is set to the new plan version, so it is no longer reported as stale. No new case is written.
+
+**7. Hand-edited cases follow the same rules.** If a case a person edited becomes invalid, it is marked obsolete and tagged in the same way, using only the fields above, and a new case is written. The PR shows the old case next to the new one, so the person can carry their edits over. Instruction changes alone never make a case obsolete. They are listed in the PR for a person to judge, because instructions guide what to test, not what is correct (rule 4 of [4.4](04-agents.md#44-oracle-rules)).
+
+**Stale** is the short window between a source change and the next case generator run. A case is stale when rule 4 would make it obsolete but the generator has not run yet. `qa status` lists stale cases, and the engine adds `stale: true` to their results so the analysis can say a failure may come from an outdated case. Staleness is computed from fingerprints, never stored. For a case confirmed under rule 6, the comparison uses the fingerprints in `sources.lock` as of the plan version in `qa_meta.confirmed_in_plan` (read from git history), not the older ones in its `traces_to`.
 
 ## 6.6 Ticket statuses
 
 - The statuses that count are `sources.tracker.statuses` in `agent.yaml`, defaulting to `defaults.tracker_statuses` in the firm profile.
 - Stories in other statuses are ignored when first seen.
 - A story that was tracked and moves back out of the list is `on_hold`: its behaviors and cases keep their files, the plan section notes it, and the case generator marks cases `blocked` with `blocked_by: [on_hold:<key>]`. They come back when the story returns to a tracked status.
-- Only a criterion removed from the story, or a story deleted or closed as not done, retires behaviors (TP-11).
+- Only a criterion removed from the story, or a story deleted or closed as not done, retires behaviors (TP-11), and their cases become obsolete (`obsolete:behavior-removed`).
 
 ## 6.7 Deployed version and pending cases
 
@@ -124,7 +160,7 @@ When a contract carries two major versions of the same API (for example operatio
 
 - Each major version is its own API folder: `apis/refund` for the first one seen, `apis/refund-v2` for the next, with `version_of: refund` in `agent.yaml` and in the plan section.
 - Each has its own plan section, cases, data template, and data files. Data values are not shared, because the versions may need different inputs; the plan generator notes which variables match so people can copy values.
-- Removing `/v1` from the contract retires the `refund` section and cases as with any removed API.
+- Removing `/v1` from the contract retires the `refund` section and makes its cases obsolete (`obsolete:api-removed`), as with any removed API.
 - Which operation belongs to which API is decided by `scan-layout` from the path prefix or the contract's own version grouping, and written to `agent.yaml` `apis.<api>.operations`, where a person can correct it.
 
 ## 6.9 Workflows

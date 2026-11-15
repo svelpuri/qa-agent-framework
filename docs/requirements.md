@@ -236,7 +236,7 @@ The framework works in any firm. Everything that differs between firms is a conn
 | TC-5  | For each variable the template records name, type, description, required or optional, example, whether it is a secret, and which cases use it.    | Proposed |
 | TC-6  | People provide real values in one data file per environment; moving to a new environment never requires changing a test case.                     | Stated   |
 | TC-7  | Expected results come from requirements (stories, spec, contracts), never from reading the implementation.                                        | Proposed |
-| TC-8  | When the plan changes, only cases for affected APIs are regenerated; person-edited cases are kept; cases for retired behavior are marked retired. | Proposed |
+| TC-8  | Generators never overwrite. When nothing changed, nothing is written. When the plan changes, existing cases keep their test content; a case that is no longer valid is marked obsolete and tagged with the reason, and a new case covers the changed requirement. No duplicate cases. | Stated   |
 | TC-9  | Every case traces to a plan item and to a story or acceptance criterion.                                                                          | Proposed |
 | TC-10 | Test cases are tagged with their tickets.                                                                                                         | Stated   |
 | TC-11 | Data files are YAML; a case may list several named data sets to run the same steps with different values.                                         | Proposed |

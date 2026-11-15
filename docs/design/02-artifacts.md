@@ -10,7 +10,7 @@ Every artifact below has a template in `framework/templates/` and a schema in `f
 | API | `[a-z][a-z0-9-]{1,39}`, optional `-v<n>` suffix for side-by-side versions | `refund`, `refund-v2` | Service |
 | Case prefix | `[A-Z]{2,6}`, set once in `agent.yaml` as `case_prefix` | `PAY` | Repo |
 | API key | `[A-Z0-9]{2,8}`, set per API in `agent.yaml` `apis.<api>.key` | `REF` | Service |
-| Test case | `<case_prefix>-<api key>-TC-<4 digits>` | `PAY-REF-TC-0004` | Repo; never reused, even after retirement |
+| Test case | `<case_prefix>-<api key>-TC-<4 digits>` | `PAY-REF-TC-0004` | Repo; never reused, even after the case is obsolete |
 | Behavior | `<api>.B<n>` | `refund.B3` | Service; never reused |
 | Validation | `<api>.V<n>` | `refund.V4` | Service |
 | Validation gap | `VG-<n>`; referenced across services as `<service>:VG-<n>` | `payments:VG-1` | Service |
@@ -22,7 +22,7 @@ Every artifact below has a template in `framework/templates/` and a schema in `f
 | Branch | `qa/<agent>/<service>/<short-description>` | `qa/plan/payments/v1.3` | Repo |
 | Plan tag | `<service>/plan-v<MAJOR.MINOR>` | `payments/plan-v1.3` | Repo |
 
-New ids are the next free number found by scanning existing files, including retired ones. The `validate` step rejects a duplicate id.
+New ids are the next free number found by scanning existing files, including obsolete ones. The `validate` step rejects a duplicate id.
 
 ## 2.2 Firm profile (`test-assets/firm-profile.yaml`)
 
@@ -193,12 +193,14 @@ requirement_gaps:
 | `tags` | Yes | Includes `ticket:<KEY>` per ticket; free tags allowed |
 | `type` | Yes | `functional`, `negative`, `boundary`, `contract`, `event`, `data`, `auth` |
 | `priority` | Yes | `P1`, `P2`, `P3` |
-| `status` | Yes | `active`, `blocked`, `quarantined`, `retired` |
+| `status` | Yes | `active`, `blocked`, `quarantined`, `obsolete` |
+| `obsolete` | When obsolete | `{since_plan, reason, cause, detail, replaced_by}` ([6.5](06-versioning.md#65-change-policy-obsolete-and-add-never-overwrite)) |
+| `replaces` | When it replaces obsolete cases | Ids of the cases it replaces |
 | `blocked_by` | When blocked | `[VG-<n>]` or `[RG-<n>]` |
 | `applies_from_service_version` | Yes | Semantic version the behavior ships in |
 | `datasets` | No | Names of data sets; the steps run once per data set |
 | `setup`, `steps`, `teardown` | `steps` yes | Ordered step lists; `teardown` runs even when a step fails |
-| `qa_meta` | Yes, written by tools | `{generated_by: {agent, framework_version, session}, generated_fp, edited_by_person}` |
+| `qa_meta` | Yes, written by tools | `{generated_by: {agent, framework_version, session}, generated_fp, edited_by_person, confirmed_in_plan}` |
 
 `status` meaning:
 
@@ -207,9 +209,9 @@ requirement_gaps:
 | `active` | Case generator | Runs |
 | `blocked` | Case generator, when a validator or requirement is missing | Not run; reported `blocked` with the gap id |
 | `quarantined` | A person (the optimizer may propose it by PR) | Runs; its verdict is recorded but does not affect the exit code |
-| `retired` | Case generator, when the behavior was removed | Not run; not reported |
+| `obsolete` | Case generator, when the requirement it tests changed or was removed; also tagged `obsolete` and `obsolete:<reason>` | Not run; kept on disk; listed by `qa status` |
 
-`qa_meta.generated_fp` is the fingerprint of the case as the generator last wrote it (excluding `qa_meta`). If the file's current fingerprint differs, a person edited it: tools treat it as `edited_by_person: true` whether or not the flag was set, and set the flag on the next generator commit. This is the only change agents may make to an edited case.
+`qa_meta.generated_fp` is the fingerprint of the case as the generator last wrote it (excluding `qa_meta`). If the file's current fingerprint differs, a person edited it: tools treat it as `edited_by_person: true` whether or not the flag was set, and set the flag on the next generator commit. Generators never change the test content of any existing case, edited or not; the few fields they may change are listed in [6.5](06-versioning.md#65-change-policy-obsolete-and-add-never-overwrite).
 
 ### Steps
 

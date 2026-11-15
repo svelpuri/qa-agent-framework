@@ -27,6 +27,7 @@ Workflow agents follow the same pattern in a later phase: one plan and one set o
 - **The engine decides pass or fail.** Agents design tests and explain results; they never change a verdict.
 - **Every step runs by default**; flags turn any step off or run only some. Nothing waits on a mandatory approval; review is a team process.
 - **Generation never overwrites what people own:** instruction files, person-written plan sections, and hand-edited test cases.
+- **No change, no write; invalid cases become obsolete.** Unchanged sources produce no changes. A case that is no longer valid is marked obsolete and tagged, never rewritten, and a new case covers the change.
 - **Changes are tracked, not guessed.** Each plan records the source versions it came from, so changed APIs, stories, and instructions mark exactly the affected cases stale.
 - **Results stay out of git**; secrets stay in a vault and are masked everywhere.
 

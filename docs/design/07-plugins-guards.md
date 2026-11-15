@@ -28,7 +28,7 @@ Interface:
 class PluginContext:
     service: str; agent: str; session_id: str
     config: dict                       # from agent.yaml plugins.<agent>.<name>
-    cases: list[TestCase]              # changed and retired cases in this session, plus all cases on --full
+    cases: list[TestCase]              # new and obsolete cases in this session, plus all cases on --full
     assets_root: str
     output_dir: str | None             # for writes_to under generated/
     state: dict                        # loaded from the state file
@@ -60,7 +60,7 @@ Guards are runtime-neutral Python functions in `framework/hooks/guards.py`. The 
 | Guard | Signature | Blocks |
 |---|---|---|
 | Non-production | `check_url(url, environment) -> Decision` | Any host not in the environment's `allowed_hosts`, any environment with `production: true`, and in agent sessions any URL to a host in a production environment listed in the registry |
-| Person-owned files | `check_write(path, content_before, content_after) -> Decision` | Writes to any `instructions/` folder, `apis/<api>/data/<env>.yaml`, `firm-profile.yaml`, `registry/environments.yaml`; changes to `qa:person` blocks or to person-owned `qa:shared` blocks in a plan; changes to edited cases other than `qa_meta.edited_by_person` |
+| Person-owned files | `check_write(path, content_before, content_after) -> Decision` | Writes to any `instructions/` folder, `apis/<api>/data/<env>.yaml`, `firm-profile.yaml`, `registry/environments.yaml`; changes to `qa:person` blocks or to person-owned `qa:shared` blocks in a plan; changes to any existing case outside the fields allowed in [6.5](06-versioning.md#65-change-policy-obsolete-and-add-never-overwrite) |
 | Write scope | `check_scope(path, allowed_paths) -> Decision` | Writes outside the service folder and work folder of the current session |
 | Secret leak | `check_text(text) -> Decision` | Text written by an agent that contains a registered secret value or a `${secret:...}` reference outside an environment data file |
 

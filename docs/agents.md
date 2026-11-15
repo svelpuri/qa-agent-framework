@@ -59,7 +59,7 @@ Writes test cases and data file templates from the latest plan.
 | `plugins` | Runs enabled plugins, for example pushing cases to the issue tracker or exporting browser tests |
 | `commit` | Commits to a branch and opens a pull request |
 
-**Never:** overwrites a case marked `edited_by_person: true` (proposes the change instead); derives expected results from the implementation.
+**Never:** writes anything when nothing changed; rewrites the test content of an existing case (a case that is no longer valid is marked `obsolete` and tagged, and a new case replaces it); writes a duplicate of an active case; derives expected results from the implementation.
 
 ---
 
@@ -73,7 +73,7 @@ Runs test cases in one environment, then summarizes and analyzes the run.
 
 | Step | What it does |
 |---|---|
-| `select-cases` | Picks cases by service, API, id, or tag; skips retired cases |
+| `select-cases` | Picks cases by service, API, id, or tag; skips obsolete cases |
 | `check-data` | Resolves every variable from the environment data file and vault references; lists all missing values before any call |
 | `run` | The engine runs the cases, applies validators, and decides pass or fail; cases for an undeployed service version are reported as pending |
 | `analyze` | Classifies failures: product, test, data, environment, dependency, requirement gap, flaky |
