@@ -40,7 +40,7 @@ Every item marked TBD in the requirements, the docs, or the sample structure, an
 | Merging into hand-edited cases | Never merged automatically. Edits are detected by fingerprint; the PR carries a proposed diff | [6.5](06-versioning.md#65-stale-cases-and-hand-edited-cases) |
 | How workflows track API versions | `workflow.lock` pins section versions and fingerprints of every service API a workflow calls | [6.9](06-versioning.md#69-workflows) |
 | Validator catalog format | Catalog entry schema with `kind`, `interface`, parameter schema, status, version | [3.6](03-engine.md#36-validators-and-the-catalog) |
-| Validator generator details | Inputs, outputs, required tests, acceptance rules | [4.5](04-agents.md#45-validator-generator) |
+| Validator generator details | Inputs, outputs, required tests, acceptance rules | [4.8](04-agents.md#48-validator-generator) |
 | Connector interfaces (all twelve) | Python protocols with errors and conformance checks | [5](05-connectors.md) |
 | Final folder and file names | Confirmed with three additions: `qa_meta` in cases, `.local/` work folders, `index/runs/` objects | [2](02-artifacts.md) |
 | Final step names | Confirmed as listed in [agents](../agents.md); validator generator gets its own steps | [4](04-agents.md) |
