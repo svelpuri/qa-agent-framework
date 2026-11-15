@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 1000 470" xmlns="http://www.w3.org/2000/svg" width="1000" height="470"><rect x="0" y="0" width="1000" height="470" fill="#ffffff"/><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#5F5E5A"/></marker></defs>
+<text x="500" y="30" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="middle" font-weight="bold" fill="#26215C">How the engine decides a case&#x27;s status</text>
+<rect x="330" y="50" width="300" height="48" rx="7" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+<text x="480.0" y="77.5" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#04342C">Case selected for the run</text>
+<polyline points="480.0,98 480.0,126" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah)"/>
+<rect x="330" y="128" width="300" height="48" rx="7" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+<text x="480.0" y="149.35" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#412402">Case status is blocked?</text>
+<text x="480.0" y="161.65" font-family="Helvetica, Arial, sans-serif" font-size="9.3" text-anchor="middle" font-weight="normal" fill="#854F0B">a validation or requirement gap is open</text>
+<polyline points="480.0,176 480.0,204" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah)"/>
+<text x="494.0" y="194" font-family="Helvetica, Arial, sans-serif" font-size="9.3" text-anchor="start" font-weight="bold" fill="#5F5E5A">no</text>
+<polyline points="630,152.0 678,152.0" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah)"/>
+<text x="652" y="147.0" font-family="Helvetica, Arial, sans-serif" font-size="9.3" text-anchor="middle" font-weight="bold" fill="#5F5E5A">yes</text>
+<rect x="680" y="128" width="220" height="48" rx="7" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+<text x="790.0" y="149.35" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#2C2C2A">blocked</text>
+<text x="790.0" y="161.65" font-family="Helvetica, Arial, sans-serif" font-size="9.3" text-anchor="middle" font-weight="normal" fill="#5F5E5A">reason names the gap</text>
+<rect x="330" y="206" width="300" height="48" rx="7" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+<text x="480.0" y="227.35" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#412402">Applies from a version newer than deployed?</text>
+<text x="480.0" y="239.65" font-family="Helvetica, Arial, sans-serif" font-size="9.3" text-anchor="middle" font-weight="normal" fill="#854F0B">deployed version from the connector</text>
+<polyline points="480.0,254 480.0,282" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah)"/>
+<text x="494.0" y="272" font-family="Helvetica, Arial, sans-serif" font-size="9.3" text-anchor="start" font-weight="bold" fill="#5F5E5A">no</text>
+<polyline points="630,230.0 678,230.0" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah)"/>
+<text x="652" y="225.0" font-family="Helvetica, Arial, sans-serif" font-size="9.3" text-anchor="middle" font-weight="bold" fill="#5F5E5A">yes</text>
+<rect x="680" y="206" width="220" height="48" rx="7" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/>
+<text x="790.0" y="227.35" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#2C2C2A">pending_deploy</text>
+<text x="790.0" y="239.65" font-family="Helvetica, Arial, sans-serif" font-size="9.3" text-anchor="middle" font-weight="normal" fill="#5F5E5A">reported, not failed</text>
+<rect x="330" y="284" width="300" height="48" rx="7" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+<text x="480.0" y="305.35" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#412402">A step could not complete?</text>
+<text x="480.0" y="317.65000000000003" font-family="Helvetica, Arial, sans-serif" font-size="9.3" text-anchor="middle" font-weight="normal" fill="#854F0B">transport error or timeout after retries</text>
+<polyline points="480.0,332 480.0,360" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah)"/>
+<text x="494.0" y="350" font-family="Helvetica, Arial, sans-serif" font-size="9.3" text-anchor="start" font-weight="bold" fill="#5F5E5A">no</text>
+<polyline points="630,308.0 678,308.0" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah)"/>
+<text x="652" y="303.0" font-family="Helvetica, Arial, sans-serif" font-size="9.3" text-anchor="middle" font-weight="bold" fill="#5F5E5A">yes</text>
+<rect x="680" y="284" width="220" height="48" rx="7" fill="#FBEAF0" stroke="#993556" stroke-width="1"/>
+<text x="790.0" y="305.35" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#4B1528">failed</text>
+<text x="790.0" y="317.65000000000003" font-family="Helvetica, Arial, sans-serif" font-size="9.3" text-anchor="middle" font-weight="normal" fill="#993556">failure_kind: transport, timeout</text>
+<rect x="330" y="362" width="300" height="48" rx="7" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+<text x="480.0" y="383.35" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#412402">Every validator passed?</text>
+<text x="480.0" y="395.65000000000003" font-family="Helvetica, Arial, sans-serif" font-size="9.3" text-anchor="middle" font-weight="normal" fill="#854F0B">all validators run, even after one fails</text>
+<polyline points="630,386.0 678,386.0" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah)"/>
+<text x="652" y="381.0" font-family="Helvetica, Arial, sans-serif" font-size="9.3" text-anchor="middle" font-weight="bold" fill="#5F5E5A">no</text>
+<rect x="680" y="362" width="220" height="48" rx="7" fill="#FBEAF0" stroke="#993556" stroke-width="1"/>
+<text x="790.0" y="377.2" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#4B1528">failed</text>
+<text x="790.0" y="389.5" font-family="Helvetica, Arial, sans-serif" font-size="9.3" text-anchor="middle" font-weight="normal" fill="#993556">failure_kind: validation</text>
+<text x="790.0" y="401.8" font-family="Helvetica, Arial, sans-serif" font-size="9.3" text-anchor="middle" font-weight="normal" fill="#993556">or validator_error</text>
+<polyline points="330,386.0 282,386.0" fill="none" stroke="#5F5E5A" stroke-width="1.4" marker-end="url(#ah)"/>
+<text x="306" y="381.0" font-family="Helvetica, Arial, sans-serif" font-size="9.3" text-anchor="middle" font-weight="bold" fill="#5F5E5A">yes</text>
+<rect x="80" y="362" width="200" height="48" rx="7" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+<text x="180.0" y="383.35" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#04342C">passed</text>
+<text x="180.0" y="395.65000000000003" font-family="Helvetica, Arial, sans-serif" font-size="9.3" text-anchor="middle" font-weight="normal" fill="#0F6E56">every step ran, every check passed</text>
+<rect x="40" y="128" width="250" height="140" rx="7" fill="#EEEDFE" stroke="#534AB7" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="165.0" y="164.6" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#26215C">Recorded with every verdict</text>
+<text x="165.0" y="176.9" font-family="Helvetica, Arial, sans-serif" font-size="9.3" text-anchor="middle" font-weight="normal" fill="#534AB7">quarantined: true counts in results</text>
+<text x="165.0" y="189.2" font-family="Helvetica, Arial, sans-serif" font-size="9.3" text-anchor="middle" font-weight="normal" fill="#534AB7">but not in the exit code</text>
+<text x="165.0" y="201.5" font-family="Helvetica, Arial, sans-serif" font-size="9.3" text-anchor="middle" font-weight="normal" fill="#534AB7">stale: true when sources changed</text>
+<text x="165.0" y="213.8" font-family="Helvetica, Arial, sans-serif" font-size="9.3" text-anchor="middle" font-weight="normal" fill="#534AB7">since the case was generated</text>
+<text x="165.0" y="226.1" font-family="Helvetica, Arial, sans-serif" font-size="9.3" text-anchor="middle" font-weight="normal" fill="#534AB7">Failure classes are analysis,</text>
+<text x="165.0" y="238.4" font-family="Helvetica, Arial, sans-serif" font-size="9.3" text-anchor="middle" font-weight="normal" fill="#534AB7">written to report.md, never here</text>
+<text x="500" y="450" font-family="Helvetica, Arial, sans-serif" font-size="9.3" text-anchor="middle" font-weight="normal" fill="#5F5E5A">Amber: decisions. Pink: failed with the engine-observed failure_kind. Grey: not run. Green: passed.</text>
+</svg>

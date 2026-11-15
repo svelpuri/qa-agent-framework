@@ -2,7 +2,7 @@
 
 ![Service and API folders](diagrams/fig03-service-and-api-folders-in-the-test-assets-repo.svg)
 
-Names are proposals; the detailed design document finalizes them.
+Names are final as of the [detailed design](design/02-artifacts.md), which also adds `.local/work/` session folders and one run index object per run.
 
 ## Stores
 

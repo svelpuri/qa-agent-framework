@@ -1,6 +1,6 @@
 # Versioning and change tracking
 
-Basics only. The detailed rules are TBD in the design document.
+Basics only. The detailed rules are in [design chapter 6](design/06-versioning.md).
 
 ![Versioning](diagrams/fig04-versioning-when-a-new-or-changed-api-appears.svg)
 
@@ -36,6 +36,6 @@ Basics only. The detailed rules are TBD in the design document.
 | Instruction or wiki page changed | Affected sections re-read and updated | Minor |
 | Sources disagree | Listed as a requirement gap; affected cases blocked | None |
 
-## Open (TBD)
+## Resolved in the design
 
-Exact version numbering; what counts as breaking; which ticket statuses trigger updates; how the deployed version is discovered; side-by-side API versions such as `/v1` and `/v2`; merging into hand-edited cases; how workflows track the API versions they call.
+Version numbering, what counts as breaking, which ticket statuses trigger updates, how the deployed version is discovered, side-by-side API versions such as `/v1` and `/v2`, merging into hand-edited cases, and how workflows track the API versions they call are all settled in [design chapter 6](design/06-versioning.md).
