@@ -138,6 +138,25 @@ Obsolete cases stay in the folder so history stays readable. They are never run,
 
 **7. Hand-edited cases follow the same rules.** If a case a person edited becomes invalid, it is marked obsolete and tagged in the same way, using only the fields above, and a new case is written. The PR shows the old case next to the new one, so the person can carry their edits over. Instruction changes alone never make a case obsolete. They are listed in the PR for a person to judge, because instructions guide what to test, not what is correct (rule 4 of [4.4](04-agents.md#44-oracle-rules)).
 
+**8. Overwrite on request.** `--overwrite` on `qa plan` or `qa cases` replaces rules 1 to 6 for that run, within the scope set by `--api` or `--case` (the whole service when neither is given):
+
+| | Default | With `--overwrite` |
+|---|---|---|
+| Nothing changed in the sources | Nothing written | Regenerated anyway |
+| Plan | Only changed API sections updated | Every generated block in scope rewritten, and `qa:shared` blocks no person has edited |
+| Existing generated case | Kept; obsolete and tagged when invalid, plus a new case | Rewritten in place with the same id |
+| Case for a behavior that no longer exists | Obsolete and tagged | Obsolete and tagged (a case without a behavior cannot be rewritten) |
+
+These never change, even with the flag: instruction files and pages, `qa:person` blocks and `qa:shared` blocks a person edited, environment data files, and cases with `edited_by_person: true`. Hand-edited cases still follow rule 7, so the flag never discards a person's work. A run that wants to replace one of those must first have a person hand it back (for example by setting `edited_by_person: false`).
+
+Other rules for the flag:
+
+- A rewrite that comes out identical is not written, so `--overwrite` on unchanged inputs can still end with `no_changes`.
+- A rewritten case keeps its id, gets a new `qa_meta.generated_fp`, and records `qa_meta.overwritten: {session, previous_commit}`. Git keeps the previous version.
+- A plan rewrite bumps the plan's minor version and adds a `CHANGELOG.md` entry that starts "Overwritten on request".
+- `validate` relaxes the allowed-fields check from rule 3 only for cases in scope, and the session record and PR list every file that was overwritten.
+- The flag is accepted on the command line and in CI/CD job definitions only, never as a default in `agent.yaml`, so overwriting is always a decision made for one run.
+
 **Stale** is the short window between a source change and the next case generator run. A case is stale when rule 4 would make it obsolete but the generator has not run yet. `qa status` lists stale cases, and the engine adds `stale: true` to their results so the analysis can say a failure may come from an outdated case. Staleness is computed from fingerprints, never stored. For a case confirmed under rule 6, the comparison uses the fingerprints in `sources.lock` as of the plan version in `qa_meta.confirmed_in_plan` (read from git history), not the older ones in its `traces_to`.
 
 ## 6.6 Ticket statuses

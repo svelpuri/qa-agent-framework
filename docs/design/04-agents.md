@@ -18,7 +18,7 @@ Every agent step receives the same base context in `<step>.in.json`: the service
 
 `write-plan` rules for the agent (in the skill, checked where possible by `validate`):
 
-- Touch only API sections listed in `detect-changes.out.json`, plus sections 4 and 5.
+- Touch only API sections listed in `detect-changes.out.json`, plus sections 4 and 5. With `--overwrite`, every API section in scope is rewritten ([6.5](06-versioning.md#65-change-policy-obsolete-and-add-never-overwrite) rule 8), and `detect-changes` reporting nothing does not end the session.
 - Every behavior lists at least one source (TP-13). Every validation lists its behaviors and either validators or a gap.
 - Conflicting sources become a requirement gap of kind `conflict`. The agent does not pick a side (AI-10).
 - Record `influenced_by` for every instruction used (AI-11).
@@ -43,6 +43,7 @@ Rules enforced by `validate`:
 - Every request value that is not a constant from the contract (method, path template, header names) is a `${variable}` (TC-3). Literal hosts, ids, and amounts fail validation.
 - Every validator is an `active` catalog entry and its parameters match the schema (VL-8).
 - Cases for a behavior blocked by a validation or requirement gap have `status: blocked` and `blocked_by`.
+- With `--overwrite`, cases in scope that are not hand-edited are rewritten in place instead (rule 8).
 - Existing cases are unchanged except for the fields allowed in [6.5](06-versioning.md#65-change-policy-obsolete-and-add-never-overwrite), checked against the base commit.
 - No two active cases share a duplicate key.
 

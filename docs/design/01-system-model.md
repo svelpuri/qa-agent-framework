@@ -47,7 +47,7 @@ Both modes produce the same work folder, the same session record, and the same o
 | Command | Purpose |
 |---|---|
 | `qa plan <service> [--api <api>] [--major]` | Test Plan Generator; `--major` bumps the plan's major version |
-| `qa cases <service> [--api <api>]` | Test Case Generator |
+| `qa cases <service> [--api <api>] [--case <id>]` | Test Case Generator |
 | `qa run <service> --env <env> [--api <api>] [--case <id>] [--tag <tag>]` | Test Executor |
 | `qa optimize <service> [--runs <n>]` | Optimizer and Learner |
 | `qa validator <service>:<gap-id>` | Validator Generator |
@@ -70,6 +70,7 @@ Common flags on the four agent commands and `qa validator`:
 | `--skip <step>[,<step>]` | Turn steps off for this run |
 | `--only <step>[,<step>]` | Run only these steps |
 | `--plugin <name>=on\|off` | Turn a plugin on or off for this run (repeatable) |
+| `--overwrite` | `qa plan` and `qa cases` only. Regenerate and rewrite in place, even when nothing changed, instead of the default obsolete-and-add policy ([6.5](06-versioning.md#65-change-policy-obsolete-and-add-never-overwrite)). Limit it with `--api` or `--case`. Person-owned content stays protected |
 | `--dry-run` | Run every step but write nothing outside the work folder; `commit`, `publish`, and `open-pr` print what they would do |
 | `--json` | Print the headless result object ([1.7](#17-headless-output-and-exit-codes)) instead of text |
 | `--budget-usd <n>` | Lower the cost cap for this run ([7.5](07-plugins-guards.md#75-cost-control-and-the-off-switch)); cannot raise it |

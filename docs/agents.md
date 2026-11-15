@@ -9,6 +9,7 @@ Common flags:
 | `--skip <step>[,<step>]` | Turn steps off for this run |
 | `--only <step>[,<step>]` | Run only these steps |
 | `--plugin <name>=on\|off` | Turn a plugin on or off for this run |
+| `--overwrite` | Plan and case generators only: regenerate and rewrite in place even when nothing changed, scoped by `--api` or `--case`; instructions, person-written plan sections, and hand-edited cases stay protected |
 | `--dry-run` | Report what would change; write nothing |
 
 Precedence: framework defaults, then the service's `agent.yaml`, then flags. Skipped steps are always listed in the output.

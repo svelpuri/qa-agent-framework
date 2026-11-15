@@ -48,6 +48,7 @@ Every item marked TBD in the requirements, the docs, or the sample structure, an
 | Failure taxonomy | Seven classes with decision rules and required evidence | [4.7](04-agents.md#47-failure-taxonomy) |
 | Methodology (what to test) | Coverage rules per behavior | [4.3](04-agents.md#43-test-design-method) |
 | Oracle rules | Source order and conflict handling | [4.4](04-agents.md#44-oracle-rules) |
+| Overwriting on request | `--overwrite` on `qa plan` and `qa cases`, per run and scoped; person-owned content stays protected | [6.5](06-versioning.md#65-change-policy-obsolete-and-add-never-overwrite) |
 | Case status values | `active`, `blocked`, `quarantined`, `obsolete`; the sample's `reviewed` is dropped because nothing is ever marked approved | [2.6](02-artifacts.md#26-test-case-apisapicasescase-idyaml) |
 | Transport errors versus validator failures | One status, `failed`, with a `failure_kind` field; no new status | [3.7](03-engine.md#37-verdict-rules) |
 | Run index under parallel writers | One index object per run instead of one shared file | [8.2](08-results-store.md#82-run-index) |

@@ -200,7 +200,7 @@ requirement_gaps:
 | `applies_from_service_version` | Yes | Semantic version the behavior ships in |
 | `datasets` | No | Names of data sets; the steps run once per data set |
 | `setup`, `steps`, `teardown` | `steps` yes | Ordered step lists; `teardown` runs even when a step fails |
-| `qa_meta` | Yes, written by tools | `{generated_by: {agent, framework_version, session}, generated_fp, edited_by_person, confirmed_in_plan}` |
+| `qa_meta` | Yes, written by tools | `{generated_by: {agent, framework_version, session}, generated_fp, edited_by_person, confirmed_in_plan, overwritten}` |
 
 `status` meaning:
 
